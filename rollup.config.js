@@ -12,6 +12,12 @@ export default [
     input: "src/index.ts",
     output: [
       {
+        file: packageJson.test,
+        format: "esm",
+        banner: "/* eslint-disable */",
+        sourcemap: false,
+      },
+      {
         file: packageJson.main,
         format: "cjs",
         sourcemap: true,
@@ -33,6 +39,6 @@ export default [
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/],
+    external: [/\.css$/, "react", "react-dom"],
   },
 ];
